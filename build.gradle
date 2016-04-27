@@ -24,7 +24,7 @@ scmVersion {
         pre 'fileUpdate', [file: 'src/main/resources/app.props', pattern: {v,p -> /(app.version=).*/}, replacement: {v, p -> "\$1$v"}]
         pre 'commit'
 
-        post 'fileUpdate', [file: 'src/main/resources/app.props', pattern: {v,p -> /(app.version=).*/}, replacement: {v, p -> "\$" + readVersion() + "-SNAPSHOT"}]
+        post 'fileUpdate', [file: 'src/main/resources/app.props', pattern: {v,p -> /(app.version=).*/}, replacement: {v, p -> "\$" + p.readVersion() + "-SNAPSHOT"}]
         post 'commit'
     }    
 }
