@@ -11,10 +11,14 @@ plugins {
 }
 
 scmVersion {
+
 	tag {
 	    prefix = 'babba'
 	}
 
+    repository {
+        customKey = project.file(System.getProperty('user.home')+ '/.ssh/id_rsa')
+    }
 }
 
 project.version = scmVersion.version
