@@ -21,7 +21,7 @@ scmVersion {
     }
 
     hooks {
-        pre 'fileUpdate', [file: 'src/main/resources/app.props', pattern: {v,p -> /(app.version=)0.1.3/}, replacement: {v, p -> "\$1 $v"}]
+        pre 'fileUpdate', [file: 'src/main/resources/app.props', pattern: {v,p -> /(app.version=).*/}, replacement: {v, p -> "\$1$v"}]
         pre 'commit'
     }    
 }
