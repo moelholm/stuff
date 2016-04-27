@@ -23,6 +23,9 @@ scmVersion {
     hooks {
         pre 'fileUpdate', [file: 'src/main/resources/app.props', pattern: {v,p -> /(app.version=).*/}, replacement: {v, p -> "\$1$v"}]
         pre 'commit'
+
+        post 'fileUpdate', [file: 'src/main/resources/app.props', pattern: {v,p -> /(app.version=).*/}, replacement: {v, p -> "\$1$v-SNAPSHOT"}]
+        post 'commit'
     }    
 }
 
