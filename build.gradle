@@ -19,6 +19,11 @@ scmVersion {
     repository {
         customKey = project.file(System.getProperty('user.home')+ '/.ssh/id_rsa')
     }
+
+    hooks {
+        pre 'fileUpdate', [file: 'src/main/resources/app.props', pattern: {v,p -> /(app.version = ) $v/}, replacement: {v, p -> "\$1 $v"}]
+        pre 'commit'
+    }    
 }
 
 project.version = scmVersion.version
